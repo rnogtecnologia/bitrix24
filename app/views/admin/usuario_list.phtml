@@ -1,0 +1,75 @@
+<div class="block-header">
+    <h2>ACESSOS</h2>
+</div>
+
+<?php if ($view_msgError){ ?>
+    <script> swal('Erro', '<?php echo $view_msgError; ?>', 'error'); </script>
+<?php } ?>
+<?php if ($view_msgSuccess){ ?>    
+    <script> swal('Sucesso', '<?php echo $view_msgSuccess; ?>', 'success'); </script>
+<?php } ?>
+
+<div class="row clearfix">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="card">
+          <div class="header">
+              <h2>
+                  ACESSOS 
+                  <?php if ($view_userInfo['permissao'] == 'A'){ ?>
+                  <button type="button" class="btn btn-lg btn-primary waves-effect" onclick="window.location.href = '/<?php echo ROOT; ?>usuario/inserir';">ADICIONAR NOVO</button>
+                  <?php } ?>
+              </h2>              
+          </div>
+          <div class="body">
+              <div class="table-responsive">
+                  <table class="table table-bordered table-striped table-hover dataTable js-exportable display" id="dataTable-acessos">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>                            
+                            <th>Ativo</th>                                            
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      <?php foreach ($view_usuarios as $query): ?>
+                      <tr>                                   
+                        <td><?php echo $query['nome']; ?></td>                      
+                        <td><?php echo $query['ativo']; ?></td>                     
+                        <td>               
+                        <?php if ($view_userInfo['permissao'] == 'A'){ ?>                                 
+                            <button class="btn btn-link waves-effect" title="Editar" onclick="window.location.href='/<?php echo ROOT; ?>usuario/editar/id/<?php echo $query['idusuario']; ?>';"><i class="material-icons">create</i></button>
+                            <a class="remover btn btn-link waves-effect" title="Remover" href="/<?php echo ROOT; ?>usuario/remover/id/<?php echo $query['idusuario']; ?>"><i class="material-icons">delete</i></a>
+                        <?php } ?>
+                        </td>
+                      </tr>
+                      <?php endforeach; ?>                                        
+                    </tbody>
+                  </table>
+              </div>
+          </div>
+        </div>
+    </div>
+</div>    
+
+<!--<button type="button" class="btn btn-primary btn-circle-lg waves-effect waves-circle waves-float" style="position: fixed; bottom: 20px; right: 20px;" onclick="window.location.href = '/<?php echo ROOT; ?>usuario/inserir';">
+    <i class="material-icons">add</i>
+</button>-->
+
+<script>
+    $(function(){
+        $('.remover').click(function(event){
+            if(!confirm('Deseja realmente remover o registro selecionado?')){
+                event.preventDefault();
+                return false;
+            }
+
+            return true;
+        });
+
+        $('#dataTable-acessos').DataTable({        
+          order: [[1, "asc"]], 
+        });   
+
+    });
+
+</script>

@@ -1,0 +1,121 @@
+<div class="block-header">
+    <h2>CONTATOS</h2>
+</div>
+
+<?php if ($view_msgError){ ?>
+    <script> swal('Erro', '<?php echo $view_msgError; ?>', 'error'); </script>
+<?php } ?>
+<?php if ($view_msgSuccess){ ?>    
+    <script> swal('Sucesso', '<?php echo $view_msgSuccess; ?>', 'success'); </script>
+<?php } ?>
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header"><h2>DADOS DO CONTATO <button type="button" class="btn btn-lg btn-primary waves-effect" onclick="window.location.href = '/<?php echo ROOT; ?>contato';">VOLTAR À LISTA</button>            
+            </h2></div>
+            <div class="body">
+            	<form id="form-contato" name="form_contato" method="post" action="<?php echo $view_action; ?>"  enctype="multipart/form-data">                		
+                    
+                    <div class="row clearfix">
+                        <div class="col-md-8">
+                            <label for="inputNome">Nome <span class="text-danger">*</span></label>
+                            <div class="form-group form-group-lg">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" name="nome" required value="<?php echo $view_queries[0]['nome']; ?>">
+                                </div>
+                            </div>
+                        </div>                        
+                        <div class="col-md-8">
+                            <label for="inputCpf">CPF <span class="text-danger">*</span></label>
+                            <div class="form-group form-group-lg">
+                                <div class="form-line">
+                                    <input type="text" class="form-control cpf" name="cpf" required value="<?php echo $view_queries[0]['cpf']; ?>">
+                                </div>
+                            </div>
+                        </div>                        
+                    </div>
+
+                    <div class="row clearfix">
+                        <div class="col-md-4">
+                            <label for="inputTelefone">Celular <span class="text-danger">*</span></label>
+                            <div class="form-group form-group-lg">
+                                <div class="form-line">
+                                    <input type="text" class="form-control celular" name="telefone" required value="<?php echo $view_queries[0]['telefone']; ?>">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <label for="inputEmail">E-mail <span class="text-danger">*</span></label>
+                            <div class="form-group form-group-lg">
+                                <div class="form-line">
+                                    <input type="email" class="form-control" name="email" required value="<?php echo $view_queries[0]['email']; ?>">
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="row clearfix">
+                        <div class="col-md-4">
+                            <label for="inputEmpresa">Nome da Empresa <span class="text-danger">*</span></label>
+                            <div class="form-group form-group-lg">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" name="empresa_nome" required value="<?php echo $view_queries[0]['empresa_nome']; ?>">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <label for="inputEmail">CNPJ <span class="text-danger">*</span></label>
+                            <div class="form-group form-group-lg">
+                                <div class="form-line">
+                                    <input type="text" class="form-control cnpj" name="empresa_cnpj" required value="<?php echo $view_queries[0]['empresa_cnpj']; ?>">
+                                </div>
+                            </div>
+                        </div>                        
+                    </div>
+                    
+				  
+				 	<div class="row clearfix">
+	                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+	                    	<input type="hidden" name="idusuario" value="<?php echo $view_queries[0]['idusuario']; ?>" />
+	                        <button type="submit" class="btn btn-success m-t-15 waves-effect"><i class="material-icons">done</i> SALVAR</button>
+	                        <button type="button" class="btn cancelar m-t-15 waves-effect"><i class="material-icons">clear</i> CANCELAR</button>				
+	                    </div>
+	                </div>                   				  
+				  
+				  	<div class="row clearfix">
+	                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+				      	&nbsp;
+				    </div>
+				    <div class="row clearfix">
+	                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+				      	&nbsp;
+				    </div>
+				    <div class="row clearfix">
+	                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+				      	&nbsp;
+				    </div>
+
+				</form>
+            </div>
+        </div> 
+    </div>
+</div>    
+
+
+	
+	
+<script>
+	$(function(){
+		$('.cancelar').click(function(event){						
+			location.href='/<?php echo ROOT; ?>contato/index';
+			event.preventDefault();
+			return false;
+		});		
+
+	});
+
+</script>

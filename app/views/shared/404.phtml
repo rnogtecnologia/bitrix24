@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title><?php echo TITLE; ?> - 404</title>
+    <!-- Favicon-->
+    <!--<link rel="icon" href="/<?php echo ASSETS; ?>mdb2/favicon.ico" type="image/x-icon">-->
+    <link href="/<?php echo ASSETS; ?>img/favicon.png" rel="icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Core Css -->
+    <link href="/<?php echo ASSETS; ?>mdb2/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Waves Effect Css -->
+    <link href="/<?php echo ASSETS; ?>mdb2/plugins/node-waves/waves.css" rel="stylesheet" />
+
+    <!-- Animation Css -->
+    <link href="/<?php echo ASSETS; ?>mdb2/plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <!-- Sweetalert Css -->
+    <link href="/<?php echo ASSETS; ?>mdb2/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+
+    <!-- Custom Css -->
+    <link href="/<?php echo ASSETS; ?>mdb2/css/style.css" rel="stylesheet">
+
+
+
+    <!-- Jquery Core Js -->
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core Js -->
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/bootstrap/js/bootstrap.js"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/node-waves/waves.js"></script>
+
+    <!-- Validation Plugin Js -->
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/jquery-validation/jquery.validate.js"></script>
+
+    <!-- Custom Js -->
+    <script src="/<?php echo ASSETS; ?>mdb2/js/admin.js"></script>
+    <script src="/<?php echo ASSETS; ?>mdb2/js/pages/examples/sign-in.js"></script>
+
+    <!-- SweetAlert Plugin Js -->
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/sweetalert/sweetalert.min.js"></script>
+    
+</head>
+
+<body class="login-page bg-white" style="max-width:100%;">
+    <div class="login-box">
+        
+		<div class="text-center col-black">
+			<h1 class="font-50" style="font-size: 100px">404</h1>
+			PÁGINA NÃO ENCONTRADA
+			<br><small><?php echo $msg; ?></small>
+		</div>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <div class="logo">            
+            <img src="/<?php echo ASSETS; ?>img/logo.png" alt="LOGO" class="center-block" height="100">            
+        </div>               
+        <div class="text-center">            
+            <a href="/<?php echo ROOT; ?>" class="btn btn-default "><i class="material-icons">home</i> Home</a>
+        </div>
+    </div>    
+    <?php //if (isset($msg)){ ?>        
+        <!--<script>swal("Erro!", "<?php echo $msg; ?>", "error");</script>-->
+    <?php //} ?>
+</body>
+
+</html>
+

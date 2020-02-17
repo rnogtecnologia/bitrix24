@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="utf-8">    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="rnog">
+    <meta name="author" content="rnog software">
+
+    <title><?php echo TITLE; ?></title>
+
+    <link href="/<?php echo ASSETS; ?>img/outras.png" rel="icon" />    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Core Css -->
+    <link href="/<?php echo ASSETS; ?>mdb2/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Waves Effect Css -->
+    <link href="/<?php echo ASSETS; ?>mdb2/plugins/node-waves/waves.css" rel="stylesheet" />
+
+    <!-- Animation Css -->
+    <link href="/<?php echo ASSETS; ?>mdb2/plugins/animate-css/animate.css" rel="stylesheet" />
+
+    <!-- Morris Chart Css-->
+    <link href="/<?php echo ASSETS; ?>mdb2/plugins/morrisjs/morris.css" rel="stylesheet" />
+
+    <link href="/<?php echo ASSETS; ?>mdb2/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+
+    
+    <link href="/<?php echo ASSETS; ?>mdb2/css/themes/all-themes.css" rel="stylesheet" />
+
+    <!-- Colorpicker Css -->
+    <link href="/<?php echo ASSETS; ?>mdb2/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css" rel="stylesheet" />
+
+    <!-- Dropzone Css -->
+    <link href="/<?php echo ASSETS; ?>mdb2/plugins/dropzone/dropzone.css" rel="stylesheet">
+
+    <!-- Multi Select Css -->
+    <link href="/<?php echo ASSETS; ?>mdb2/plugins/multi-select/css/multi-select.css" rel="stylesheet">
+
+    <!-- Bootstrap Spinner Css -->
+    <link href="/<?php echo ASSETS; ?>mdb2/plugins/jquery-spinner/css/bootstrap-spinner.css" rel="stylesheet">
+
+    <!-- Bootstrap Tagsinput Css -->
+    <link href="/<?php echo ASSETS; ?>mdb2/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+
+    <!-- Bootstrap Select Css -->
+    <link href="/<?php echo ASSETS; ?>mdb2/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+
+    <!-- noUISlider Css -->
+    <link href="/<?php echo ASSETS; ?>mdb2/plugins/nouislider/nouislider.min.css" rel="stylesheet" />
+
+    <link href="/<?php echo ASSETS; ?>mdb2/plugins/summernote/summernote.css" rel="stylesheet" />
+
+    <link href="/<?php echo ASSETS; ?>mdb2/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+
+    <!--<link href="/<?php echo ASSETS; ?>mdb2/plugins/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet" />-->
+
+    <link href="/<?php echo ASSETS; ?>mdb2/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+
+    <link href="/<?php echo ASSETS; ?>mdb2/css/style.css" rel="stylesheet">
+
+
+    <!-- Jquery Core Js -->
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core Js -->
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/bootstrap/js/bootstrap.js"></script>
+
+    <!-- Select Plugin Js -->
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+    <!-- Slimscroll Plugin Js -->
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+    <!-- Waves Effect Plugin Js -->
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/node-waves/waves.js"></script>
+
+    <!-- Jquery CountTo Plugin Js -->
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/jquery-countto/jquery.countTo.js"></script>
+
+    <!-- Morris Plugin Js -->
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/raphael/raphael.min.js"></script>
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/morrisjs/morris.js"></script>
+
+    <!-- ChartJs -->
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/chartjs/Chart.bundle.js"></script>
+
+    <!-- Flot Charts Plugin Js -->
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/flot-charts/jquery.flot.js"></script>
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/flot-charts/jquery.flot.resize.js"></script>
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/flot-charts/jquery.flot.pie.js"></script>
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/flot-charts/jquery.flot.categories.js"></script>
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/flot-charts/jquery.flot.time.js"></script>
+
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/jquery-sparkline/jquery.sparkline.js"></script>
+    <script src="/<?php echo ASSETS; ?>mdb2/js/admin.js"></script>   
+    <script src="/<?php echo ASSETS; ?>mdb2/js/demo.js"></script>    
+
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+
+    <!--<script src="/<?php echo ASSETS; ?>js/jquery.maskMoney.js"></script>
+    <script src="/<?php echo ASSETS; ?>js/jquery.mask.min.js"></script>-->
+
+    <!-- Bootstrap Colorpicker Js -->
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+
+    <!-- Dropzone Plugin Js -->
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/dropzone/dropzone.js"></script>
+
+    <!-- Input Mask Plugin Js -->
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
+
+    <!-- Multi Select Plugin Js -->
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/multi-select/js/jquery.multi-select.js"></script>
+
+    <!-- Jquery Spinner Plugin Js -->
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/jquery-spinner/js/jquery.spinner.js"></script>
+
+    <!-- Bootstrap Tags Input Plugin Js -->
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+
+    <!-- noUISlider Plugin Js -->
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/nouislider/nouislider.js"></script>
+
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/summernote/summernote.js"></script>
+    
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/sweetalert/sweetalert.min.js"></script>
+
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/momentjs/moment.js"></script>
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/momentjs/pt-br.js"></script>
+
+    <!--<script src="/<?php echo ASSETS; ?>mdb2/plugins/fullcalendar/dist/fullcalendar.min.js"></script>
+
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/fullcalendar/dist/lang/pt-br.js"></script>-->
+
+
+
+    <script src="/<?php echo ASSETS; ?>mdb2/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+
+
+    <script>
+                    
+        function bloquearTeclas(Event){
+            var Event = Event ? Event : window.event;
+            var tecla = (Event.keyCode) ? Event.keyCode : Event.which;
+            if ( (tecla ==  16) || // shift
+                 (tecla ==  17) || // crtl
+                 (tecla ==  18) || // alt
+                 (tecla == 112) || // f1
+                 (tecla == 113) || // f2
+                 (tecla == 114) || // f3
+                 (tecla == 115) || // f4
+                 (tecla == 116) || // f5
+                 (tecla == 117) || // f6
+                 (tecla == 118) || // f7
+                 (tecla == 119) || // f8
+                 (tecla == 120) || // f9
+                 (tecla == 121) || // f10
+                 (tecla == 122) //|| // f11
+                 //(tecla == 123)  // f12
+                )
+            {        
+                return false;
+            }
+            return true;
+        }
+        //document.onkeypress    = bloquearTeclas;
+        document.onkeydown     = bloquearTeclas;
+        //document.oncontextmenu = mensagem;
+
+    </script>                        
+
+    <script>
+    // Autocomplete */  
+      (function($) {
+        function Autocomplete(element, options) {
+          this.element = element;
+          this.options = options;
+          this.timer = null;
+          this.items = new Array();
+
+          $(element).attr('autocomplete', 'off');
+          //$(element).on('focus', $.proxy(this.focus, this));
+          $(element).on('blur', $.proxy(this.blur, this));
+          $(element).on('keydown', $.proxy(this.keydown, this));
+          
+          $(element).after('<ul class="dropdown-menu"></ul>');
+          $(element).siblings('ul.dropdown-menu').delegate('a', 'click', $.proxy(this.click, this));    
+        }
+        
+        Autocomplete.prototype = {
+          //focus: function() {
+            //this.request();
+          //},
+          blur: function() {
+            setTimeout(function(object) {
+              object.hide();
+            }, 200, this);
+          },
+          click: function(event) {
+            event.preventDefault();
+            
+            value = $(event.target).parent().attr('data-value');
+            
+            if (value && this.items[value]) {
+              this.options.select(this.items[value]);
+            }
+          },  
+          keydown: function(event) {
+            switch(event.keyCode) {
+              case 27: // escape
+                this.hide();
+                break;
+              default:
+                this.request();
+                break;
+            }
+          },
+          show: function() {
+            var pos = $(this.element).position();
+            
+            $(this.element).siblings('ul.dropdown-menu').css({
+              top: pos.top + $(this.element).outerHeight(),
+              left: pos.left
+            });
+                  
+            $(this.element).siblings('ul.dropdown-menu').show();      
+          },
+          hide: function() {
+            $(this.element).siblings('ul.dropdown-menu').hide();
+          },
+          request: function() {
+            clearTimeout(this.timer);
+            
+            this.timer = setTimeout(function(object) {
+              object.options.source($(object.element).val(), $.proxy(object.response, object));
+            }, 200, this);
+          },    
+          response: function(json) {
+            html = '';
+            
+            if (json.length) {
+              for (i = 0; i < json.length; i++) {
+                this.items[json[i]['value']] = json[i];       
+              }
+              
+              for (i = 0; i < json.length; i++) {
+                if (!json[i]['category']) {
+                    //html += '<li data-value="' + json[i]['value'] + '" style="border-bottom:1px solid #ccc;"><a href="#">' + json[i]['label'] + '</a></li>';
+                    html += '<li data-value="' + json[i]['value'] + '"><a href="#">' + json[i]['label'] + '</a></li>';
+                }
+              } 
+
+              
+              // Get all the ones with a categories
+              var category = new Array();
+              
+              for (i = 0; i < json.length; i++) {
+                if (json[i]['category']) { 
+                  if (!category[json[i]['category']]) {
+                    category[json[i]['category']] = new Array();
+                    category[json[i]['category']]['name'] = json[i]['category'];
+                    category[json[i]['category']]['item'] = new Array();
+                  }
+                  
+                  category[json[i]['category']]['item'].push(json[i]);
+                }
+              }
+              
+              for (i in category) {
+                html += '<li class="dropdown-header">' + category[i]['name'] + '</li>';
+                
+                for (j = 0; j < category[i]['item'].length; j++) {
+                  html += '<li data-value="' + category[i]['item'][j]['value'] + '"><a href="#">&nbsp;&nbsp;&nbsp;' + category[i]['item'][j]['label'] + '</a></li>';
+                }
+              }
+            }
+            
+            if (html) {
+              this.show();
+            } else {
+              this.hide();
+            }
+            
+            $(this.element).siblings('ul.dropdown-menu').html(html);
+
+          }
+        };
+
+        $.fn.autocomplete = function(option) {
+          return this.each(function() {
+            var data = $(this).data('autocomplete');
+            
+            if (!data) {
+              data = new Autocomplete(this, option);
+              
+              $(this).data('autocomplete', data);
+            }
+          }); 
+        }
+      })(window.jQuery);        
+    </script>
+
+    <style type="text/css">
+      .nav > li > a, .dropdown-menu > li > a{
+        text-transform: uppercase;
+      }      
+    </style>    
+</head>
+
+<body class="theme-cyan">
+
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-cyan">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Aguarde...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <div class="search-icon">
+            <i class="material-icons">search</i>
+        </div>
+        <input type="text" placeholder="START TYPING...">
+        <div class="close-search">
+            <i class="material-icons">close</i>
+        </div>
+    </div>
+    <!-- #END# Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a href="javascript:void(0);" class="bars"></a>
+                <a class="navbar-brand" href="/<?php echo ROOT; ?>">
+                  <?php echo TITLE; ?>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a><?php echo $view_userInfo['nome']; ?></a></li>
+                    <li><a href="/<?php echo ROOT; ?>index/logout" title="Sair"><i class="material-icons">input</i></a></li>                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- #Top Bar -->
+    <section>
+        <!-- Left Sidebar -->
+        <aside id="leftsidebar" class="sidebar">
+            <!-- User Info -->
+            
+            <div class="user-info" style="background-image: none;">
+                <div class="image">                    
+                    <!--<i class="material-icons col-grey font-50">person</i>-->
+                    <img src="/<?php echo ASSETS; ?>img/logo.png" class="img-responsive center-block" style="height:100px">
+                </div>
+                <!--<div class="info-container" style="top:0px;line-height: 15px;white-space: normal;">-->
+                    <!--<div class="name col-grey" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php //echo $view_userInfo['nome']; ?></div>-->
+                    <!--<?php //echo $view_userInfo['nome']; ?>-->
+                <!--</div>-->
+            </div>
+            <!-- #User Info -->
+            <!-- Menu -->
+            <div class="menu">
+                <ul class="list">
+                    <?php if ((empty($view_controllerCurrent)) || ($view_controllerCurrent == 'index')) { $classActive = 'class="active"'; }else{ $classActive = ''; } ?>
+                    <li <?php echo $classActive; ?>><a href="/<?php echo ROOT; ?>index"><i class="material-icons">dashboard</i> <span>DASHBOARD</span></a></li>                    
+                    
+                    <?php if ($view_controllerCurrent == 'negocio') { $classActive = 'class="active"'; }else{ $classActive = ''; } ?>
+                    <li <?php echo $classActive; ?>><a href="/<?php echo ROOT; ?>negocio"><i class="material-icons">business_center</i> <span>NEGÓCIOS</span></a></li>                                      
+
+                    <?php if ($view_controllerCurrent == 'contato') { $classActive = 'class="active"'; }else{ $classActive = ''; } ?>
+                    <li <?php echo $classActive; ?>><a href="/<?php echo ROOT; ?>contato"><i class="material-icons">group</i> <span>CONTATOS</span></a></li>
+
+                    <?php if ($view_controllerCurrent == 'empresa') { $classActive = 'class="active"'; }else{ $classActive = ''; } ?>
+                    <li <?php echo $classActive; ?>><a href="/<?php echo ROOT; ?>empresa"><i class="material-icons">business</i> <span>EMPRESAS</span></a></li>
+                    
+                    <?php if ($view_userInfo['permissao'] == 'A'){ ?>                                          
+                      <?php if ($view_controllerCurrent == 'usuario') { $classActive = 'class="active"'; }else{ $classActive = ''; } ?>
+                      <li <?php echo $classActive; ?>><a href="/<?php echo ROOT; ?>usuario"><i class="material-icons">lock</i> <span>ACESSOS</span></a></li> 
+                    <?php } ?>
+                    
+                </ul>
+            </div>
+            <!-- #Menu -->
+            <!-- Footer -->            
+            <!-- #Footer -->
+        </aside>
+        <!-- #END# Left Sidebar -->
+        <!-- Right Sidebar -->
+
+        <!-- #END# Right Sidebar -->
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+            <?php if ( isset($view_content) ){ echo $view_content; } ?>
+        </div>
+    </section>
+    <style>
+      .dataTables_filter{
+        text-align: left !important;
+      }
+      .dataTables_filter input{
+        width: 300px !important;
+      }
+    </style>
+    <script>
+        $(document).ready(function() {
+
+          $('.block-header').hide();
+
+            $('.js-exportable').DataTable({
+              //order: [[ 1, "asc" ]], 
+              dom:
+                "<'row'<'col-sm-12'f>>" +
+                "<'row'<'col-sm-12'tr>>" +
+                "<'row'<'col-sm-5'i><'col-sm-7'p>>"
+            });
+
+            
+            //$('.valor').inputmask('9999999.99 R$', { placeholder: '_______,__' });
+            $('.moeda').inputmask('currency', {"autoUnmask": true,
+                    radixPoint:",",
+                    groupSeparator: ".",
+                    allowMinus: false,
+                    prefix: 'R$ ',
+                    digits: 2,
+                    digitsOptional: false,
+                    rightAlign: true,
+                    unmaskAsNumber: true
+            });
+            $('.valor').inputmask('decimal');
+            $('.qtde').inputmask('integer');
+            $('.cnpj').inputmask('99.999.999/9999-99', { placeholder: '__.___.___/____-__' });
+            $('.cpf').inputmask('999.999.999-99', { placeholder: '___.___.___-__' });
+            $('.placa').inputmask('AAA-9999');
+            $('.telefone').inputmask('(99) 9999-9999', { placeholder: '(__) ____-____' });
+            $('.celular').inputmask('(99) 99999-9999', { placeholder: '(__) _____-____' });
+            $('.cep').inputmask('99999-999', { placeholder: '_____-___' });
+            $('.data').inputmask('99/99/9999', { placeholder: '__/__/____' });
+                        
+            //$(".valor").maskMoney({allowZero:false, precision:2, thousands:""});
+            //$(".qtde").maskMoney({allowZero:false, precision:0, thousands:""});            
+            /*
+            $(".data").mask('00/00/0000');
+            $(".hora").mask('00:00');
+            $(".telefone").mask('(00) 0000-0000');
+            $(".celular").mask('(00) 00000-0000');
+            $(".cep").mask('00000-000');            
+            $(".cpf").mask('000.000.000-00', {reverse: true});
+            $(".cnpj").mask('00.000.000/0000-00', {reverse: true});            
+
+            $(".placa").mask('AAA-0000');            
+            */
+            //Date Time            
+            $('.hora').bootstrapMaterialDatePicker({ date: false, format : 'HH:mm', lang : 'pt-br', cancelText : 'CANCELAR' });
+            $('.dia').bootstrapMaterialDatePicker({ weekStart : 0, format : 'DD/MM/YYYY', lang : 'pt-br', time: false, cancelText : 'CANCELAR' });
+
+
+            $(document).on('show.bs.modal', '.modal', function (event) {
+                var zIndex = 1040 + (10 * $('.modal:visible').length);
+                $(this).css('z-index', zIndex);
+                setTimeout(function() {
+                    $('.modal-backdrop').not('.modal-stack').css('z-index', zIndex - 1).addClass('modal-stack');
+                }, 0);
+            });
+
+        });        
+    </script> 
+    <script language="JavaScript" type="text/javascript">   
+      var number_format = function(number, decimals, dec_point, thousands_sep) {
+        number = (number + '')
+          .replace(/[^0-9+\-Ee.]/g, '');
+        var n = !isFinite(+number) ? 0 : +number,
+          prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+          sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+          dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+          s = '',
+          toFixedFix = function(n, prec) {
+            var k = Math.pow(10, prec);
+            return '' + (Math.round(n * k) / k)
+              .toFixed(prec);
+          };
+        // Fix for IE parseFloat(0.55).toFixed(0) = 0;
+        s = (prec ? toFixedFix(n, prec) : '' + Math.round(n))
+          .split('.');
+        if (s[0].length > 3) {
+          s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+        }
+        if ((s[1] || '')
+          .length < prec) {
+          s[1] = s[1] || '';
+          s[1] += new Array(prec - s[1].length + 1)
+            .join('0');
+        }
+        return s.join(dec);
+      }
+        function dateMask(inputData, e){
+        if(document.all) // Internet Explorer
+            var tecla = event.keyCode;
+        else //Outros Browsers
+            var tecla = e.which;
+        if(tecla > 47 && tecla < 58){ // numeros de 0 a 9 e "/"
+            var data = inputData.value;
+            if (data.length == 2 || data.length == 5){
+                data += '/';
+                inputData.value = data;
+            }
+        }else if(tecla == 8 || tecla == 0 || tecla == 9) // Backspace, Delete e setas direcionais(para mover o cursor, apenas para FF)
+            return true;
+        else
+            return false;
+        }
+    </script>       
+    <?php if (isset($view_js)){ echo $view_js; } ?>
+
+       
+
+</body>
+
+</html>

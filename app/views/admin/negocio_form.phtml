@@ -1,0 +1,149 @@
+<div class="block-header">
+    <h2>NEGÓCIO</h2>
+</div>
+
+<?php if ($view_msgError){ ?>
+    <script> swal('Erro', '<?php echo $view_msgError; ?>', 'error'); </script>
+<?php } ?>
+<?php if ($view_msgSuccess){ ?>    
+    <script> swal('Sucesso', '<?php echo $view_msgSuccess; ?>', 'success'); </script>
+<?php } ?>
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header"><h2>CADASTRO DE NEGÓCIO <button type="button" class="btn btn-lg btn-primary waves-effect" onclick="window.location.href = '/<?php echo ROOT; ?>negocio';">VOLTAR À LISTA</button></h2></div>
+            <div class="body">
+            	<form id="form-negocio" name="form_negocio" method="post" action="<?php echo $view_action; ?>"  enctype="multipart/form-data" > 
+
+                    <div class="row clearfix">
+                        <div class="col-md-12">
+                            <label for="inputEmpresa">Empresa</label> 
+                            <div class="form-group form-group-lg">
+                                <div class="form-line">                                    
+                                    <select name="idempresa" class="form-control show-tick" id="inputEmpresa">
+                                        <option value="" selected>...</option>
+                                        <?php foreach ($view_empresas as $empresa) { ?>
+                                            <option value="<?php echo $empresa['idempresa']?>" <?php if ($view_queries[0]['idempresa'] == $empresa['idempresa']){ ?>selected<?php } ?>><?php echo $empresa['nome']; ?></option>
+                                        <?php } ?>                                        
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                    <div class="row clearfix">
+                        <div class="col-md-12">
+                            <label for="inputContato">Contato</label> 
+                            <div class="form-group form-group-lg">
+                                <div class="form-line">                                    
+                                    <select name="idusuario" class="form-control show-tick" id="inputContato">
+                                        <option value="" selected>...</option>
+                                        <?php foreach ($view_contatos as $contato) { ?>
+                                            <option value="<?php echo $contato['idusuario']?>" <?php if ($view_queries[0]['idusuario'] == $contato['idusuario']){ ?>selected<?php } ?>><?php echo $contato['nome']; ?></option>
+                                        <?php } ?>                                        
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+
+
+                    <div class="row clearfix">
+                        <div class="col-md-4">
+                            <label for="inputStatus">Negócio Ganho?</label> 
+                            <div class="form-group form-group-lg">
+                                <div class="form-line">                                    
+                                    <select name="status" class="form-control show-tick" id="inputStatus">
+                                        <option value="N" <?php if ((empty($view_queries[0]['status'])) || ($view_queries[0]['status'] == 'N')){ ?>selected<?php } ?>>Não</option>
+                                        <option value="S" <?php if ($view_queries[0]['status'] == 'S'){?>selected<?php } ?>>Sim</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        
+                    
+
+                    <div class="row clearfix">
+                        <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+                            <input type="hidden" name="idnegocio" value="<?php echo $view_queries[0]['idnegocio']; ?>" />
+                            <button type="submit" class="btn btn-success m-t-15 waves-effect"><i class="material-icons">done</i> SALVAR</button>
+                            <button type="button" class="btn cancelar m-t-15 waves-effect"><i class="material-icons">clear</i> CANCELAR</button>                
+                        </div>
+                    </div>
+				  
+				  
+				  	<div class="row clearfix">
+	                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+				      	&nbsp;
+				    </div>
+				    <div class="row clearfix">
+	                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+				      	&nbsp;
+				    </div>
+				    <div class="row clearfix">
+	                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+				      	&nbsp;
+				    </div>
+
+				</form>
+            </div>
+        </div> 
+    </div>
+</div>    
+
+
+	
+	
+<script>
+	$(function(){
+		$('.cancelar').click(function(event){						
+			location.href='/<?php echo ROOT; ?>negocio/index';
+			event.preventDefault();
+			return false;
+		});
+        
+        
+
+	});
+
+    $('#inputEmpresa').on('change', function() {                
+
+        $.ajax({
+            url: '/<?php echo ROOT; ?>contato/contatosPorEmpresa/id/'+this.value,
+            type: 'get',
+            dataType: 'json',                                      
+            success: function(json) {            
+                                                          
+                $('#inputContato').html('');
+                var _htmlSel = '';
+                _htmlSel += '<option value="" selected>...</option>';
+                if (json){
+                    for (var i = 0; i < json.length; i++) {
+                        if (json[i]['idusuario'] == '<?php echo $view_queries[0]['idusuario']; ?>') {
+                            _htmlSel += '<option value="'+json[i]['idusuario']+'" selected>'+json[i]['nome']+'</option>';
+                        }else{
+                            _htmlSel += '<option value="'+json[i]['idusuario']+'">'+json[i]['nome']+'</option>';
+                        }
+                    }
+                }
+                $('#inputContato').html(_htmlSel);
+                $('#inputContato').selectpicker('refresh');
+                //$('#inputContato').selectpicker('val', json['idusuario']);
+                
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert('Erro: '+thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+    });
+
+    $('#inputEmpresa').trigger('change');
+
+
+</script>
+
+
+
+
+

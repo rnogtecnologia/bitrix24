@@ -1,0 +1,277 @@
+<div class="block-header">
+    <h2>SERVIÇO</h2>
+</div>
+
+<?php if ($view_msgError){ ?>
+    <script> swal('Erro', '<?php echo $view_msgError; ?>', 'error'); </script>
+<?php } ?>
+<?php if ($view_msgSuccess){ ?>    
+    <script> swal('Sucesso', '<?php echo $view_msgSuccess; ?>', 'success'); </script>
+<?php } ?>
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header"><h2>CADASTRO DE SERVIÇO <button type="button" class="btn btn-lg btn-primary waves-effect" onclick="window.location.href = '/<?php echo ROOT; ?>servico';">VOLTAR À LISTA</button></h2></div>
+            <div class="body">
+            	<form id="form-servico" name="form_servico" method="post" action="<?php echo $view_action; ?>"  enctype="multipart/form-data" > 
+
+                    <?php if ($view_userInfo['permissao'] == 'A'){ ?>
+                    <div class="row clearfix">
+                        <div class="col-md-12">
+                            <label for="inputPet">Petshop</label> 
+                            <div class="form-group form-group-lg">
+                                <div class="form-line">                                    
+                                    <select name="idusuario" class="form-control show-tick" id="inputPet">
+                                        <option value="" selected>...</option>
+                                        <?php foreach ($view_pets as $petshop) { ?>
+                                            <option value="<?php echo $petshop['idusuario']?>" <?php if ($view_queries[0]['idusuario'] == $petshop['idusuario']){ ?>selected<?php } ?>><?php echo $petshop['nome']; ?></option>
+                                        <?php } ?>                                        
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php }else{ ?>
+                        <input type="hidden" name="idusuario" value="<?php echo $view_userInfo['codigo']; ?>">
+                    <?php } ?>                    
+
+                    <div class="row clearfix">
+                        <div class="col-md-12">
+                            <label for="inputServ">Serviço</label> 
+                            <div class="form-group form-group-lg">
+                                <div class="form-line">                                    
+                                    <select name="idcategoria" class="form-control show-tick" id="inputServ">
+                                        <option value="" selected>...</option>
+                                        <?php foreach ($view_categorias as $categoria) { ?>
+                                            <option value="<?php echo $categoria['idcategoria']?>" <?php if ($view_queries[0]['idcategoria'] == $categoria['idcategoria']){ ?>selected<?php } ?>><?php echo $categoria['descricao']; ?></option>
+                                        <?php } ?>                                        
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <div class="row clearfix">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="header">
+                                    <h2>Precificação do Serviço</h2>                                    
+                                </div>
+                                <div class="body">
+                                    <div class="row clearfix">
+                                        <div class="col-md-6">
+                                            <label for="inputTipo">Definir preços por?</label> 
+                                            <div class="form-group form-group-lg">
+                                                <input name="preco_tipo" type="radio" class="radio-col-deep-purple" id="radio_1" value="1" <?php if ( (empty($view_queries[0]['preco_tipo'])) || ($view_queries[0]['preco_tipo'] == '1') ){ ?>checked<?php } ?> />
+                                                <label for="radio_1">Preço único</label>
+                                                <input name="preco_tipo" type="radio" class="radio-col-deep-purple" id="radio_2" value="2" <?php if ($view_queries[0]['preco_tipo'] == '2'){ ?>checked<?php } ?> />
+                                                <label for="radio_2">Preço por Raças</label>
+                                            </div>
+                                        </div>                                        
+                                    </div>
+
+                                    <div class="row clearfix" id="preco-tipo-1">
+                                        <div class="col-md-6">
+                                            <label for="inputValor">Preço do serviço</label> 
+                                            <div class="form-group form-group-lg">
+                                                <div class="form-line">                                    
+                                                    <input type="text" id="inputValor" class="form-control valor" name="preco" value="<?php echo $view_queries[0]['preco']; ?>">
+                                                </div>
+                                            </div>
+                                        </div>                                        
+                                    </div>
+
+
+                                    <div class="row clearfix" id="preco-tipo-2"> 
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-lg">
+                                                <label for="radio1_1">Serviço atende a quais Pets? </label> 
+                                                <input name="atende_cao" type="checkbox" class="filled-in chk-col-deep-purple" id="radio1_1" value="Cão" <?php if (!(empty($view_queries[0]['atende_cao']))){ ?>checked<?php } ?>/>
+                                                <label for="radio1_1">Cães</label>                                
+                                                <input name="atende_gato" type="checkbox" class="filled-in chk-col-deep-purple" id="radio2_2" value="Gato" <?php if (!(empty($view_queries[0]['atende_gato']))){ ?>checked<?php } ?>/>
+                                                <label for="radio2_2">Gatos</label>                                
+                                            </div>
+                                        </div>                                        
+
+                                        <?php foreach ($view_racas as $r => $raca) { ?>
+                                        <div class="col-md-12 raca-<?php echo $raca['tipo']; ?>">
+                                            <div class="card">
+                                                <div class="body">                                                    
+                                                    <div class="row clearfix">                                        
+                                                        <div class="col-md-3">
+                                                            <label for="inputRaca">Raça do <?php echo $raca['tipo']; ?></label> 
+                                                            <div class="form-group form-group-lg">
+                                                                
+                                                                <?php if ($raca['foto']){ ?>
+                                                                    <img src="/<?php echo ROOT; ?>uploads/racas/<?php echo $raca['foto']; ?>" class="img-responsive center-block" height="150" />
+                                                                <?php }else{ ?>
+                                                                    <img src="/<?php echo ROOT; ?>uploads/racas/outras.jpg" class="img-responsive center-block" height="150" />
+                                                                <?php } ?>
+                                                                <center><h4><?php echo $raca['descricao']; ?></h4></center>
+                                                                <input type="hidden" name="precos[<?php echo $raca['idraca']; ?>][idraca]" value="<?php echo $raca['idraca']; ?>">
+                                                                <input type="hidden" name="precos[<?php echo $raca['idraca']; ?>][idservico_raca]" value="<?php echo $view_precos[$raca['idraca']]['idservico_raca']; ?>">
+                                                            </div>
+                                                        </div>                
+                                                        <div class="col-md-9">                                                            
+
+                                                            <div class="precos-preco-<?php echo $raca['idraca']; ?>">
+                                                                <div class="col-md-4">                                              
+                                                                    <label for="inputCaracteristicas">Preço</label> 
+                                                                    <input type="hidden" name="precos[<?php echo $raca['idraca']; ?>][preco_caracteristica]" id="inputCaracteristicas-<?php echo $raca['idraca']; ?>" raca="<?php echo $raca['idraca']; ?>" value="precos-preco" />
+                                                                    <input type="text" id="inputValor" class="form-control valor" name="precos[<?php echo $raca['idraca']; ?>][preco]" value="<?php echo $view_precos[$raca['idraca']]['preco']; ?>">
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <label for="inputPorHora">p/ hora</label>
+                                                                        <div class="form-group">
+                                                                            <div class="">
+                                                                                <select name="precos[<?php echo $raca['idraca']; ?>][por_hora]" id="inputPorHora">
+                                                                                    <option value="N" <?php if ( (empty($view_precos[$raca['idraca']]['por_hora'])) || ($view_precos[$raca['idraca']]['por_hora'] == 'N')){ ?>selected<?php } ?>>Não</option>
+                                                                                    <option value="S" <?php if ($view_precos[$raca['idraca']]['por_hora'] == 'S'){ ?>selected<?php } ?>>Sim</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                </div>
+                                                                <div class="col-md-4">&nbsp;</div>
+                                                            </div>                                                            
+                                                            
+                                                        </div>                                                        
+                                                    </div>                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php } ?>
+                                    </div>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>                    
+
+                    <div class="row clearfix">                                          
+                        <div class="col-md-12">
+                            <label for="inputObs">Observações ao cliente sobre o serviço</label> 
+                            <div class="form-group form-group-lg">
+                                <div class="form-line">                                    
+                                    <input type="text" id="inputObs" class="form-control" name="obs" value="<?php echo $view_queries[0]['obs']; ?>">
+                                </div>
+                            </div>
+                        </div>
+	                </div>
+
+                    <div class="row clearfix">
+                        <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+                            <input type="hidden" name="idservico" value="<?php echo $view_queries[0]['idservico']; ?>" />
+                            <button type="submit" class="btn btn-success m-t-15 waves-effect"><i class="material-icons">done</i> SALVAR</button>
+                            <button type="button" class="btn cancelar m-t-15 waves-effect"><i class="material-icons">clear</i> CANCELAR</button>                
+                        </div>
+                    </div>
+				  
+				  
+				  	<div class="row clearfix">
+	                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+				      	&nbsp;
+				    </div>
+				    <div class="row clearfix">
+	                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+				      	&nbsp;
+				    </div>
+				    <div class="row clearfix">
+	                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+				      	&nbsp;
+				    </div>
+
+				</form>
+            </div>
+        </div> 
+    </div>
+</div>    
+
+
+	
+	
+<script>
+	$(function(){
+		$('.cancelar').click(function(event){						
+			location.href='/<?php echo ROOT; ?>servico/index';
+			event.preventDefault();
+			return false;
+		});
+        
+        //Tooltip
+        $('[data-toggle="tooltip"]').tooltip({
+            container: 'body'
+        });
+
+        //Popover
+        $('[data-toggle="popover"]').popover();        
+
+        /*
+        $('select[id^="inputCaracteristicas"]').each(function () {                  
+            _iRaca = $(this).attr('raca');
+            mudaPreco(_iRaca);            
+        });
+        */
+        $('input[id^="inputCaracteristicas"]').each(function () {                  
+            _iRaca = $(this).attr('raca');
+            $('.precos-preco-'+_iRaca).show();
+            $('.precos-pelo-'+_iRaca).hide();
+            $('.precos-porte-'+_iRaca).hide();
+            $('.precos-porte-pelo-'+_iRaca).hide();
+        });
+
+	});
+
+    $('input[name="preco_tipo"]').on('change', function() {                
+        $('#preco-tipo-1').hide();
+        $('#preco-tipo-2').hide();
+                
+        if ($('input[name="preco_tipo"]:checked').val() == '1'){        
+            $('#preco-tipo-1').show();
+        }
+        if ($('input[name="preco_tipo"]:checked').val() == '2'){
+            $('#preco-tipo-2').show();
+        }        
+    });
+
+    $('input[name="preco_tipo"]').trigger('change');
+
+    $('input[name="atende_cao"]').on('change', function() {                        
+        $('.raca-Cão').hide();    
+        if ($('input[name="atende_cao"]:checked').val() == 'Cão'){        
+            $('.raca-Cão').show();
+        }        
+    });
+
+    $('input[name="atende_cao"]').trigger('change');
+
+    $('input[name="atende_gato"]').on('change', function() {                        
+        $('.raca-Gato').hide();    
+        if ($('input[name="atende_gato"]:checked').val() == 'Gato'){
+            $('.raca-Gato').show();
+        }        
+    });
+
+    $('input[name="atende_gato"]').trigger('change');
+
+    //$('#inputCaracteristicas').on('change', function() {  
+    function mudaPreco(_iRaca){
+
+        $('.precos-preco-'+_iRaca).hide();
+        $('.precos-pelo-'+_iRaca).hide();
+        $('.precos-porte-'+_iRaca).hide();
+        $('.precos-porte-pelo-'+_iRaca).hide();
+                
+        $('.'+$('#inputCaracteristicas-'+_iRaca).val()+'-'+_iRaca).show();
+    }  
+    //});
+
+    //$('#inputCaracteristicas').trigger('change');
+
+
+</script>
+
+
+
+
+

@@ -1,0 +1,138 @@
+<div class="block-header">
+    <?php if ($this->dados['userInfo']['permissao'] == 'A'){ ?>             
+        <h2>ACESSOS</h2>
+    <?php }else{ ?>
+        <h2>DADOS</h2>
+    <?php } ?>
+</div>
+
+<?php if ($view_msgError){ ?>
+    <script> swal('Erro', '<?php echo $view_msgError; ?>', 'error'); </script>
+<?php } ?>
+<?php if ($view_msgSuccess){ ?>    
+    <script> swal('Sucesso', '<?php echo $view_msgSuccess; ?>', 'success'); </script>
+<?php } ?>
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header"><h2>
+                <?php if ($this->dados['userInfo']['permissao'] == 'A'){ ?>             
+                    CADASTRO DE ACESSO 
+                <?php }else{ ?>
+                    DADOS
+                <?php }?>
+                <?php if ($this->dados['userInfo']['permissao'] == 'A'){ ?>             
+                <button type="button" class="btn btn-lg btn-primary waves-effect" onclick="window.location.href = '/<?php echo ROOT; ?>usuario';">VOLTAR À LISTA</button>
+                <?php } ?>
+            </h2></div>
+            <div class="body">
+            	<form id="form-usuario" name="form_usuario" method="post" action="<?php echo $view_action; ?>"  enctype="multipart/form-data">
+
+                    <div class="row clearfix">
+                        <div class="col-md-6">
+                            <label for="inputPermissao">Perfil do acesso</label>                        
+                            <div class="form-group form-group-lg">
+                                <div class="form-line">                                        
+                                    <select name="idpermissao" class="form-control show-tick" id="inputPermissao">
+                                        <option value="">Selecione...</option>
+                                        <?php foreach ($view_permissoes as $permissao) { ?>
+                                            <option value="<?php echo $permissao['idpermissao']; ?>" <?php if ($permissao['idpermissao'] == $view_usuarios[0]['idpermissao']){ ?>selected<?php } ?>><?php echo $permissao['descricao']; ?></option>
+                                        <?php } ?>                                        
+                                    </select>                                                                        
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputAtivo">Ativo</label>
+                            <div class="form-group form-group-lg"> 
+                                <div class="form-line"> 
+                                    <select name="ativo" class="form-control show-tick" id="inputAtivo">
+                                        <option value="S" <?php if (($view_usuarios[0]['ativo'] == 'S') || (empty($view_usuarios[0]['ativo']))){ ?>selected<?php } ?>>Sim</option>
+                                        <option value="N" <?php if ($view_usuarios[0]['ativo'] == 'N'){ ?>selected<?php } ?>>Não</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                                        
+
+                    <div class="row clearfix admin ">
+            	  		<div class="col-md-6">                        	                        	
+				    		<label for="inputNome" class="admin">Nome</label>                            
+                            <div class="form-group form-group-lg">
+                                <div class="form-line">
+                                	<input type="text" class="form-control" id="inputNome" name="nome" value="<?php echo $view_usuarios[0]['nome']; ?>" />
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>                    
+                
+                    <div class="row clearfix admin ">
+            	  		<div class="col-md-6">                        	                        	
+				    		<label for="inputLogin">Login</label>
+                            <div class="form-group form-group-lg">
+                                <div class="form-line">
+                                	<input type="text" class="form-control" id="inputLogin" name="login" value="<?php echo $view_usuarios[0]['login']; ?>" />
+                                </div>
+                            </div>
+                        </div>                 
+            	  		<div class="col-md-6">                        	                        	
+				    		<label for="inputSenha">Senha</label>
+                            <div class="form-group form-group-lg">
+                                <div class="form-line">                                	
+                                    <input type="password" class="form-control input-lg" id="senhaAlt" name="senhaAlt" value="<?php echo $view_usuarios[0]['senhaAlt']; ?>" />
+                                    <input type="hidden" id="inputSenha" name="senha" value="<?php echo $view_usuarios[0]['senha']; ?>" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+				  
+				 	<div class="row clearfix">
+	                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+	                    	<input type="hidden" name="idusuario" value="<?php echo $view_usuarios[0]['idusuario']; ?>" />
+	                        <button type="submit" class="btn btn-success m-t-15 waves-effect"><i class="material-icons">done</i> SALVAR</button>
+                            <?php if ($this->dados['userInfo']['permissao'] == 'A'){ ?>             
+	                        <button type="button" class="btn cancelar m-t-15 waves-effect"><i class="material-icons">clear</i> CANCELAR</button>				
+                            <?php } ?>
+	                    </div>
+	                </div>
+				  
+				  
+				  	<div class="row clearfix">
+	                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+				      	&nbsp;
+				    </div>
+				    <div class="row clearfix">
+	                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+				      	&nbsp;
+				    </div>
+				    <div class="row clearfix">
+	                    <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+				      	&nbsp;
+				    </div>
+
+				</form>
+            </div>
+        </div> 
+    </div>
+</div>    	
+	
+<script>
+	$(function(){
+		$('.cancelar').click(function(event){						
+			location.href='/<?php echo ROOT; ?>usuario/index';
+			event.preventDefault();
+			return false;
+		});        
+        
+
+	});
+    
+
+</script>
+
+
+
+
+
